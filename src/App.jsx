@@ -1,7 +1,11 @@
-import React from "react";
+import DefaultPopup from "./components/DefaultPopup/DefaultPopup";
 
 function App() {
-  return <div>App</div>;
+  return (
+    <>
+      <DefaultPopup />
+    </>
+  );
 }
 
 export default App;
