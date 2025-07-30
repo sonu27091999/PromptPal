@@ -1,30 +1,43 @@
 import { useEffect, useState } from "react";
 import styles from "./DefaultPopup.module.css";
+import { useChromeStorage } from "@/hooks/useChromeStorage";
 
 const DefaultPopup = () => {
   const [apiKey, setApiKey] = useState("");
   const [status, setStatus] = useState("");
   const [showKey, setShowKey] = useState(false);
+  const {
+    getApiKey: getChromStorageApiKey,
+    setApiKey: setChromeStorageApiKey,
+  } = useChromeStorage();
 
-  useEffect(() => {
+  useEffect(async () => {
     // Load existing API key on mount
-    chrome.storage.local.get(["openai_api_key"], (result) => {
-      if (result.openai_api_key) {
-        setApiKey(result.openai_api_key);
+    try {
+      const response = await getChromStorageApiKey();
+      if (response?.statusCode === 200) {
+        setApiKey(response.apiKey);
         setStatus("🔒 Key loaded from storage.");
       }
-    });
+    } catch (error) {
+      setStatus("");
+    }
   }, []);
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!apiKey.trim()) {
       setStatus("❌ Please enter a valid API key.");
       return;
     }
 
-    chrome.storage.local.set({ openai_api_key: apiKey }, () => {
-      setStatus("✅ API key saved successfully!");
-    });
+    try {
+      const response = await setChromeStorageApiKey(apiKey);
+      if (response.statusCode === 200) {
+        setStatus("✅ API key saved successfully!");
+      }
+    } catch (error) {
+      setStatus("❌ API key saved failed!");
+    }
   };
 
   return (
