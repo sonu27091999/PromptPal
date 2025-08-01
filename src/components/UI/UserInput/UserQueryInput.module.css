@@ -1,0 +1,29 @@
+.inputWrapper {
+    display: flex;
+    border-top: 1px solid #333;
+    padding: 10px;
+    background-color: #222;
+}
+
+.chatInput {
+    flex: 1;
+    padding: 8px 12px;
+    border: none;
+    min-height: 1.2em;
+    /* roughly one line height */
+    max-height: 150px;
+    resize: none;
+    overflow-y: auto;
+    /* scroll if content overflows max-height */
+    box-sizing: border-box;
+    /* to include padding and border in width/height */
+    border-radius: 8px;
+    background-color: #333;
+    line-height: 1.2em;
+    color: white;
+    margin-right: 8px;
+}
+
+.chatInput:focus {
+    outline: none;
+}
