@@ -1,3 +1,4 @@
+import ReactMarkdown from "react-markdown";
 import styles from "./ChatHistory.module.css";
 
 export default function ChatHistory({ messages }) {
@@ -8,7 +9,7 @@ export default function ChatHistory({ messages }) {
           key={idx}
           className={msg.sender === "user" ? styles.userMsg : styles.aiMsg}
         >
-          {msg.text}
+          <ReactMarkdown>{msg.text}</ReactMarkdown>
         </div>
       ))}
     </div>

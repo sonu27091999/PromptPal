@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 import styles from "./UserQueryInput.module.css";
-import ReactMarkdown from "react-markdown";
 import { SYSTEM_PROMPT } from "../../../utils/systemPrompt.js";
 import { useChatApi } from "@/hooks/useChatApi.js";
 
@@ -37,7 +36,7 @@ export default function UserQueryInput({ apiKey, messages, onSave }) {
         onSave([
           ...updatedMessages,
           {
-            text: <ReactMarkdown>{response.aiResponse}</ReactMarkdown>,
+            text: response.aiResponse,
             sender: "assistant",
           },
         ]);
