@@ -110,7 +110,6 @@ export const useChromeStorage = () => {
 
     saveChat: async (url, messages) => {
       try {
-        console.log(messages);
         const db = await openDB();
         const tx = db.transaction(STORE_NAME, "readwrite");
         const store = tx.objectStore(STORE_NAME);
@@ -132,7 +131,6 @@ export const useChromeStorage = () => {
           });
         }
         tx.oncomplete = () => {
-          console.log("success");
           return {
             message: "Chat saved successfully.",
             statusCode: 200,
@@ -140,13 +138,11 @@ export const useChromeStorage = () => {
           };
         };
         tx.onerror = () => {
-          console.log("error.");
           return new CustomError("Transaction failed", 500, {
             reason: "Transaction failed",
           });
         };
       } catch (error) {
-        console.log("catch error." + error.message);
         return new CustomError(`Failed to save chat : ${error.message}`, 500, {
           reason: `Failed to save chat : ${error.message}`,
         });

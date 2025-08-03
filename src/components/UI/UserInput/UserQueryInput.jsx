@@ -31,7 +31,6 @@ export default function UserQueryInput({ apiKey, messages, onSave }) {
         apiKey,
         SYSTEM_PROMPT.replace("{{user_query}}", input)
       );
-      console.log(response);
       if (response.statusCode === 200) {
         onSave([
           ...updatedMessages,

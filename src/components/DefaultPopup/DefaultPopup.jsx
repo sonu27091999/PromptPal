@@ -50,7 +50,20 @@ const DefaultPopup = () => {
       </h1>
 
       <label className={styles.label} htmlFor="apiKey">
-        OpenAI API Key
+        GroqAI API Key
+        <span className={styles.tooltipWrapper}>
+          <span className={styles.icon}>ⓘ</span>
+          <div className={styles.tooltipContent}>
+            <strong>Don’t have a key?</strong>{" "}
+            <a
+              href="https://console.groq.com/keys"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get one here
+            </a>
+          </div>
+        </span>
       </label>
 
       <div className={styles.inputWrapper}>

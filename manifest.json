@@ -16,7 +16,7 @@
   "content_scripts": [
     {
       "js": ["src/content.jsx"],
-      "matches": ["https://leetcode.com/problems/*"]
+      "matches": ["<all_urls>"]
     }
   ],
   "background": {

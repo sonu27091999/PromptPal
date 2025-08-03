@@ -27,6 +27,62 @@
     margin-bottom: 4px;
 }
 
+.tooltipWrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.icon {
+    font-size: 0.75rem;
+    vertical-align: top;
+    cursor: pointer;
+    margin-left: 4px;
+    color: #6b7280;
+}
+
+.tooltipContent {
+    position: absolute;
+    top: 100%;
+    /* directly below the icon */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #1f2937;
+    color: #fff;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    visibility: hidden;
+    /* NEW */
+    opacity: 0;
+    /* NEW */
+    transition: opacity 0.2s ease;
+    /* Smooth show/hide */
+    pointer-events: none;
+    /* Prevent flicker */
+}
+
+/* KEY: Allow both icon and tooltip to trigger visibility */
+.tooltipWrapper:hover .tooltipContent,
+.tooltipWrapper:focus-within .tooltipContent {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    /* Allow clicking inside */
+}
+
+.tooltipContent a {
+    color: #60a5fa;
+    text-decoration: underline;
+}
+
+.tooltipContent a:hover {
+    color: #3b82f6;
+}
+
+
 .inputWrapper {
     display: flex;
     align-items: center;
@@ -67,6 +123,20 @@
 
 .button:hover {
     background-color: #2563eb;
+}
+
+.link {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    text-align: center;
+    color: #2563eb;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.link:hover {
+    color: #1d4ed8;
 }
 
 .status {

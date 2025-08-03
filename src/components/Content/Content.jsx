@@ -32,8 +32,7 @@ const Content = () => {
           const response = await getChromStorageApiKey();
           if (response?.statusCode === 200) {
             setApiKey(response.apiKey);
-            const {urlChat} = await getChatByUrl(window.location.href);
-            console.log(urlChat);
+            const { urlChat } = await getChatByUrl(window.location.href);
             setMessages(urlChat?.messages || []);
           } else {
             setMessages([
